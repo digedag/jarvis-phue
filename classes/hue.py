@@ -55,7 +55,7 @@ class Hue:
 
     def turn_onoff(self, lightName, onOrOff):
         light = self.__get_light(lightName)
-        if lightName is None:
+        if light is None:
             return "Light "+lightName+" not found"
         light.on = onOrOff
         return "Erledigt"
