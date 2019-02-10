@@ -1,0 +1,8 @@
+*light state==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "statusall")"
+*lights off==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "lightsoff")"
+*lights on==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "lightsoff")"
+*turn (*) on==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "turnoff" -light="(1)")"
+*turn (*) off==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "turnon" -light="(1)")"
+*turn (*) brighter==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "brighter" -light="(1)")"
+*turn (*) darker==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "darker" -light="(1)")"
+*new color for (*)==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "random" -light="(1)")"

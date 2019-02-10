@@ -1,4 +1,6 @@
 *lampenstatus==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "statusall")"
+*licht aus==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "lightsoff")"
+*licht an==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "lightsoff")"
 *schalte (*) aus|*mach (*) aus==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "turnoff" -light="(1)")"
 *schalte (*) an|*mach (*) an==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "turnon" -light="(1)")"
 *schalte (*) heller|*mach (*) heller==say "$(python $(pwd)/plugins_installed/jarvis-phue/classes/hue.py ${language:0:2} "brighter" -light="(1)")"
