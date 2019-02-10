@@ -58,6 +58,7 @@ class Hue:
         if lightName is None:
             return "Light "+lightName+" not found"
         light.on = onOrOff
+        return "Erledigt"
 
     def random(self, lightName):
         light = self.__get_light(lightName)
@@ -65,6 +66,7 @@ class Hue:
             return "Light "+lightName+" not found"
         light.on = True
         light.xy = [random.random(),random.random()]
+        return "Erledigt"
 
     def darker(self, lightName):
         return self.brightness(lightName, -40)
@@ -76,7 +78,7 @@ class Hue:
             return "Light "+lightName+" not found"
         light.on = True
         light.brightness = light.brightness + change
-        return light.brightness
+        return "Erledigt"
     def __get_light(self, lightName):
         lights = self.bridge.get_light_objects('name')
         if lightName in lights:
