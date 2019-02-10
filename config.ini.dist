@@ -1,2 +1,18 @@
 [hue]
 ip = 192.168.178.??
+
+[lang_de]
+done = Erledigt
+lightstate = Die Leuchte {} ist {}.
+state_on = an
+state_off = aus
+error_connect = Verbindung zur Bridge fehlgeschlagen. Drücke den Link Button!
+light_not_found = Leuchte {} nicht gefunden
+
+[lang_en]
+done = Done
+lightstate = Light {} is {}. 
+state_on = on
+state_off = off
+error_connect = Connection to bridge failed. Press link button!
+light_not_found = Light {} not found
