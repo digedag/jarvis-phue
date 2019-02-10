@@ -1,7 +1,8 @@
 #!/usr/bin/python
 #-*- coding:Utf-8 -*-
-#import re
 from phue import Bridge
+from phue import PhueRegistrationException
+import time
 import random
 import argparse
 import os 
@@ -10,7 +11,31 @@ import ConfigParser
 class Hue:
     bridge = None
     def __init__(self, bridgeIp):
-        self.bridge = Bridge(bridgeIp)
+        bridge = self._register_with_bridge(bridgeIp)
+        if isinstance(bridge, basestring):
+            raise ValueError(bridge)
+        else:
+            self.bridge = bridge
+
+    def _register_with_bridge(self, ip):
+        i = 0
+        while i < 5:
+            bridge = None
+            i = i + 1
+            try:
+                bridge = Bridge(ip)
+            except PhueRegistrationException as pe:
+                time.sleep(1)
+                continue
+            except Exception as e:
+                return str(e)
+            else:
+                break
+        return bridge if bridge is not None else "Verbindung zur Bridge fehlgeschlagen. Drücke den Link Button!"
+#        return bridge if bridge is not None else "Connection to bridge failed. Press link button!"
+    
+    
+    
     def statusAll(self):
         lights = self.bridge.get_light_objects()
         out = '';
@@ -82,5 +107,8 @@ if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
     config = ConfigParser.ConfigParser()
     config.read(dir_path + '/../config.ini')
-    x = Hue(config.get('hue','ip'));
-    print x.do_command(args.command , args.light)
+    try:
+        x = Hue(config.get('hue','ip'));
+        print x.do_command(args.command , args.light)
+    except Exception as e:
+        print e
